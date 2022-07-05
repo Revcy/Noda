@@ -1,0 +1,30 @@
+Username: {wf_nickname}
+User ID: {wf_user_id}
+
+User level: {wf_rank}
+User exp: {wf_exp}
+User: {round(wf_playtime_seconds / 36000, 1)}
+
+PVP Information:
+
+All kills - {wf_pvp_all_kills}
+Enemy kills - {wf_pvp_enemy_kills}
+Friendly kills - {wf_pvp_friendly_kills}
+Deaths - {wf_pvp_death}
+K/D - {wf_pvp_frags_kd}
+Favorite class - {wf_favorite_pvp_class}
+Games - {wf_pvp_all}
+Wins - {wf_pvp_wins}
+Loses - {wf_pvp_lose}
+
+PVE Information:
+
+All kills - {wf_pve_all_kills}
+Enemy kills - {wf_pve_enemy_kills}
+Friendly kills - {wf_pve_friendly_kills}
+Deaths - {wf_pve_death}
+K/D - {wf_pve_frags_kd}
+Favorite class - {wf_favorite_pve_class}
+Games - {wf_pve_all}
+Wins - {wf_pve_wins}
+Loses - {wf_pve_lose}

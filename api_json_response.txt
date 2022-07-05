@@ -1,0 +1,36 @@
+200
+{
+	"user_id": "6add93aec1acd0d18a910aab29a92062",								# ID игрока
+	"nickname": "1337Ревси",													# Никнейм игрока
+	"experience": 1274000,														# Опыт игрока
+	"rank_id": 100,																# Уровень игрока
+	"is_transparent": true,														# Статус профиля (Хуй знает)
+	"kill": 497,																# Всего убито в PVP
+	"friendly_kills": 3,														# Teamkill фраги в PVP
+	"kills": 494,																# Всего убито (без учёта teamkill) в PVP
+	"death": 445,																# Всего смертей в PVP
+	"pvp": 1.11,																# K/D игрока в PVP
+	"pve_kill": 10366,															# Всего убито в PVE
+	"pve_friendly_kills": 43,													# Teamkill фраги в PVE
+	"pve_kills": 10323,															# Всего убито (без учёта teamkill) в PVE
+	"pve_death": 325,															# Всего смертей в PVE
+	"pve": 31.76,																# K/D игрока в PVE
+	"playtime": 901617,															# Наиграно в общем (в секундах)
+	"playtime_h": 25,															# Наиграно часов
+	"playtime_m": 2,															# Наиграно минут 
+	"favoritPVP": "Recon",														# Любимый класс в PVP
+	"favoritPVE": "Medic",														# Любимый класс в PVE
+	"pve_wins": 48,																# Всего побед в PVE
+	"pvp_wins": 20,																# Всего побед в PVP
+	"pvp_lost": 19,																# Всего поражений в PVP
+	"pve_lost": 21,																# Всего поражений в PVE
+	"pve_all": 69,																# Кол-во игр в PVE
+	"pvp_all": 39,																# Кол-во игр в PVP
+	"pvpwl": 1.05																# Хуй знает
+}
+
+400
+{
+	'code': 0,
+	'message': 'Пользователь не найден'
+}
