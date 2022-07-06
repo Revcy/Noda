@@ -41,10 +41,10 @@ def userinfo_report_function(message):
 def userinfo_add_additionally_inforamtion(callback):
     callback_response = callback.data[:13]
     warface_username = callback.data[14:]
-    
-    print("Starting GET " + callback.data)
+
+    # print("Starting GET " + callback.data)
     result = warface_request_user(warface_username)
-    print("Ending GET " + callback.data)
+    # print("Ending GET " + callback.data)
     
     if callback_response == 'pvp_user_stat':
         bot.send_message(callback.from_user.id, f'PVP Statistic of player {warface_username}\n\nFavorite class - {result[15]}\nAll kills - {result[4]}\nEnemy kills - {result[6]}\nFriendly kills - {result[5]}\nDeaths - {result[7]}\nK/D - {result[8]}\nGames - {result[19]}\nWins - {result[17]}\nLoses - {result[18]}')
