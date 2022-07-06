@@ -1,7 +1,7 @@
 import telebot as tg
 import requests 
 
-with open('token.txt', encoding='utf8') as file:
+with open('files/token', encoding='utf8') as file:
     file_str_lines = file.readlines()
 
     token = file_str_lines[0].replace('\n', '')
