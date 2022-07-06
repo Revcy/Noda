@@ -1,5 +1,8 @@
+from subprocess import call
+from requests import request
 import telebot as tg
-import requests 
+
+from modules.warface_web import warface_request_user
 
 with open('files/token', encoding='utf8') as file:
     file_str_lines = file.readlines()
@@ -19,45 +22,13 @@ def userinfo_function(message):
     bot.register_next_step_handler(request, userinfo_report_function)
 
 def userinfo_report_function(message):
-    parameters = {
-        'name': message.text,
-    }
+    warface_username = message.text
 
-    api = requests.get('http://api.warface.ru/user/stat/', params=parameters)
+    result = warface_request_user(warface_username)
 
-    wfinfo = api.json()
-    
-    if api:
-        wf_user_id = wfinfo['user_id']
-        wf_nickname = wfinfo['nickname']
-        wf_exp = wfinfo['experience']
-        wf_rank = wfinfo['rank_id']
-        wf_pvp_all_kills = wfinfo['kill']
-        wf_pvp_friendly_kills = wfinfo['friendly_kills']
-        wf_pvp_enemy_kills = wfinfo['kills']
-        wf_pvp_death = wfinfo['death']
-        wf_pvp_frags_kd = wfinfo['pvp']
-        wf_pve_all_kills = wfinfo['pve_kill']
-        wf_pve_friendly_kills = wfinfo['pve_friendly_kills']
-        wf_pve_enemy_kills = wfinfo['pve_kills']
-        wf_pve_death = wfinfo['pve_death']
-        wf_pve_frags_kd = wfinfo['pve']
-        wf_playtime_seconds = wfinfo['playtime']
-        wf_favorite_pvp_class = wfinfo['favoritPVP']
-        wf_favorite_pve_class = wfinfo['favoritPVE']
-        wf_pve_wins = wfinfo['pve_wins']
-        wf_pve_lose = wfinfo['pve_lost']
-        wf_pve_all = wfinfo['pve_all']
-        wf_pvp_wins = wfinfo['pvp_wins']
-        wf_pvp_lose = wfinfo['pvp_lost']
-        wf_pvp_all = wfinfo['pvp_all']
-
-        result = f'Username: {wf_nickname}\nUser ID: {wf_user_id}\n\nUser level: {wf_rank}\nUser experience: {wf_exp} exp\nUser playtime: {round(wf_playtime_seconds / 36000, 1)} hours\n\nPVP Information:\n\nAll kills - {wf_pvp_all_kills}\nEnemy kills - {wf_pvp_enemy_kills}\nFriendly kills - {wf_pvp_friendly_kills}\nDeaths - {wf_pvp_death}\nK/D - {wf_pvp_frags_kd}\nFavorite class - {wf_favorite_pvp_class}\nGames - {wf_pvp_all}\nWins - {wf_pvp_wins}\nLoses - {wf_pvp_lose}\n\nPVE Information:\n\nAll kills - {wf_pve_all_kills}\nEnemy kills - {wf_pve_enemy_kills}\nFriendly kills - {wf_pve_friendly_kills}\nDeaths - {wf_pve_death}\nK/D - {wf_pve_frags_kd}\nFavorite class - {wf_favorite_pve_class}\nGames - {wf_pve_all}\nWins - {wf_pve_wins}\nLoses - {wf_pve_lose}'
+    if result[0] != None:
+        bot.send_message(message.from_user.id, f'Account statistic of player {result[1]}\n\nUser level: {result[3]} lvl\nUser experience: {result[2]} exp.\nUser playtime: {round(result[14] / 36000, 1)} hrs\n\nUser ID: {result[0]}\n\nPVP\nFavorite class - {result[15]}\nAll kills - {result[4]}\nEnemy kills - {result[6]}\nFriendly kills - {result[5]}\nDeaths - {result[7]}\nK/D - {result[8]}\nGames - {result[19]}\nWins - {result[17]}\nLoses - {result[18]}\n\nPVE\nFavorite class - {result[16]}\nAll kills - {result[9]}\nEnemy kills - {result[11]}\nFriendly kills - {result[10]}\nDeaths - {result[12]}\nK/D - {result[13]}\nGames - {result[22]}\nWins - {result[20]}\nLoses - {result[21]}')
     else:
-        wf_error_code = wfinfo['code']
-
-        result = f"User not found or site don't response \nCode: {wf_error_code}"
-
-    bot.send_message(message.from_user.id, result)
+        bot.send_message(message.from_user.id, f"User not found or site don't response\nCode: {result[1]}")
 
 bot.polling(non_stop=True)

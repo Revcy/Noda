@@ -1,30 +1,52 @@
-Username: {wf_nickname}
-User ID: {wf_user_id}
 
-User level: {wf_rank}
-User exp: {wf_exp}
-User: {round(wf_playtime_seconds / 36000, 1)}
 
-PVP Information:
+# main_user_stat
 
-All kills - {wf_pvp_all_kills}
-Enemy kills - {wf_pvp_enemy_kills}
-Friendly kills - {wf_pvp_friendly_kills}
-Deaths - {wf_pvp_death}
-K/D - {wf_pvp_frags_kd}
-Favorite class - {wf_favorite_pvp_class}
-Games - {wf_pvp_all}
-Wins - {wf_pvp_wins}
-Loses - {wf_pvp_lose}
+Username: {result[1]}
 
-PVE Information:
+User level: {result[3]} lvl
+User experience: {result[2]} exp.
+User playtime: {round(result[14] / 36000, 1)} hrs
+User ID: {result[0]}
 
-All kills - {wf_pve_all_kills}
-Enemy kills - {wf_pve_enemy_kills}
-Friendly kills - {wf_pve_friendly_kills}
-Deaths - {wf_pve_death}
-K/D - {wf_pve_frags_kd}
-Favorite class - {wf_favorite_pve_class}
-Games - {wf_pve_all}
-Wins - {wf_pve_wins}
-Loses - {wf_pve_lose}
+- Username: {result[1]}\n\nUser level: {result[3]} lvl\nUser experience: {result[2]} exp.\nUser playtime: {round(result[14] / 36000, 1)} hrs\nUser ID: {result[0]}
+
+
+# pvp_user_stat
+
+PVP Information of user {result[1]}
+
+Favorite class - {result[15]}
+All kills - {result[4]}
+Enemy kills - {result[6]}
+Friendly kills - {result[5]}
+Deaths - {result[7]}
+K/D - {result[8]}
+Games - {result[19]}
+Wins - {result[17]}
+Loses - {result[18]}
+
+- PVP Information of user {result[1]}\n\nFavorite class - {result[15]}\nAll kills - {result[4]}\nEnemy kills - {result[6]}\nFriendly kills - {result[5]}\nDeaths - {result[7]}\nK/D - {result[8]}\nGames - {result[19]}\nWins - {result[17]}\nLoses - {result[18]}
+
+# pve_user_stat
+
+PVE Information  of user {result[1]}
+
+Favorite class - {result[16]}
+All kills - {result[9]}
+Enemy kills - {result[11]}
+Friendly kills - {result[10]}
+Deaths - {result[12]}
+K/D - {result[13]}
+Games - {result[22]}
+Wins - {result[20]}
+Loses - {result[21]}
+
+- PVE Information  of user {result[1]}\n\nFavorite class - {result[16]}\nAll kills - {result[9]}\nEnemy kills - {result[11]}\nFriendly kills - {result[10]}\nDeaths - {result[12]}\nK/D - {result[13]}\nGames - {result[22]}\nWins - {result[20]}\nLoses - {result[21]}
+
+# user_notfound
+
+User not found or site don't response
+Code: {result[1]}
+
+- User not found or site don't response\nCode: result[1]
